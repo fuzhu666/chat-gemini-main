@@ -31,13 +31,7 @@ export const createChatCompletion = async ({ payload, openai }: CreateChatComple
       const stream = OpenAIStream(response);
       return new StreamingTextResponse(stream);
     } else {
-      const mMessage = messages.map(item => {
-        return {
-          parts: item.content,
-          role: item.role
-        }
-      })
-      const response = await openai.generateContentStream({
+      const response = await openai.generateContent({
         contents: messages.map(item => {
           return {
             parts: [
@@ -50,8 +44,9 @@ export const createChatCompletion = async ({ payload, openai }: CreateChatComple
         }) as any
       });
       
+      return response.response.text
       // const stream = OpenAIStream(response);
-      return new StreamingTextResponse(response.stream);
+      // return new StreamingTextResponse(stream);
     }
     
   } catch (error) {
