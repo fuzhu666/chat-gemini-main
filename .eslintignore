@@ -1,6 +1,6 @@
 # Eslintignore for 微帝国AI
 ################################################################
-
+src
 # dependencies
 node_modules
 
