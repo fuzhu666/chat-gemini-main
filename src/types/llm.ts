@@ -2,11 +2,12 @@
  * LLM 模型
  */
 export enum LanguageModel {
-  GEMINI_PRO = 'gemini-pro',
   /**
    * GPT 3.5 Turbo
    */
   GPT3_5 = 'gpt-3.5-turbo',
+  GPT3_5_1106 = 'gpt-3.5-turbo-1106',
+  GPT3_5_16K = 'gpt-3.5-turbo-16k',
   /**
    * GPT 4
    */

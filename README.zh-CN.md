@@ -8,7 +8,7 @@
 
 <h1>Lobe Chat</h1>
 
-LobeChat 是开源的高性能聊天机器人框架，支持语音合成、多模态、可扩展的（[Function Call][fc-link]）插件系统。<br/> 支持一键免费部署私人 ChatGPT/LLM 网页应用程序。
+微帝国AI 是开源的高性能聊天机器人框架，支持语音合成、多模态、可扩展的（[Function Call][fc-link]）插件系统。<br/> 支持一键免费部署私人 ChatGPT/LLM 网页应用程序。
 
 [English](./README.md) · **简体中文** · [更新日志](./CHANGELOG.md) · [文档][github-wiki-link] · [报告问题][github-issues-link] · [请求功能][github-issues-link]
 
@@ -28,7 +28,7 @@ LobeChat 是开源的高性能聊天机器人框架，支持语音合成、多�
 [![][github-license-shield]][github-license-link]<br>
 [![][sponsor-shield]][sponsor-link]
 
-**分享 LobeChat 给你的好友**
+**分享 微帝国AI 给你的好友**
 
 [![][share-x-shield]][share-x-link]
 [![][share-telegram-shield]][share-telegram-link]
@@ -49,7 +49,7 @@ LobeChat 是开源的高性能聊天机器人框架，支持语音合成、多�
 - [✨ 特性一览](#-特性一览)
 - [⚡️ 性能测试](#️-性能测试)
 - [🛳 开箱即用](#-开箱即用)
-  - [`A` 使用 Vercel 或 Zeabur 部署](#a-使用-vercel-或-zeabur-部署)
+  - [`A` 使用 Vercel、Zeabur 或 Sealos 部署](#a-使用-vercelzeabur-或-sealos-部署)
   - [`B` 使用 Docker 部署](#b-使用-docker-部署)
   - [环境变量](#环境变量)
 - [📦 生态系统](#-生态系统)
@@ -67,11 +67,11 @@ LobeChat 是开源的高性能聊天机器人框架，支持语音合成、多�
 
 ## 👋🏻 开始使用 & 交流
 
-我们是一群充满热情的设计工程师，希望为 AIGC 提供现代化的设计组件和工具，并以开源的方式分享，以促进它们在更广泛的社区中的发展和采用，LobeChat 目前正在积极开发中，有需求或者问题，欢迎提交 [issues][issues-link]
+我们是一群充满热情的设计工程师，希望为 AIGC 提供现代化的设计组件和工具，并以开源的方式分享，以促进它们在更广泛的社区中的发展和采用，微帝国AI 目前正在积极开发中，有需求或者问题，欢迎提交 [issues][issues-link]
 
 | [![][vercel-shield-badge]][vercel-link]   | 无需安装或注册！访问我们的网站，快速体验                                     |
 | :---------------------------------------- | :--------------------------------------------------------------------------- |
-| [![][discord-shield-badge]][discord-link] | 加入我们的 Discord 社区！这是你可以与开发者和其他 LobeHub 热衷用户交流的地方 |
+| [![][discord-shield-badge]][discord-link] | 加入我们的 Discord 社区！这是你可以与开发者和其他 微帝国AI 热衷用户交流的地方 |
 
 > \[!IMPORTANT]
 >
@@ -92,7 +92,7 @@ LobeChat 是开源的高性能聊天机器人框架，支持语音合成、多�
 
 ![](https://github-production-user-asset-6210df.s3.amazonaws.com/17870709/284072129-382bdf30-e3d6-4411-b5a0-249710b8ba08.png)
 
-LobeChat 已经支持 OpenAI 最新的 [`gpt-4-vsion`](https://platform.openai.com/docs/guides/vision) 支持视觉识别的模型，这是一个具备视觉识别能力的多模态智能。
+微帝国AI 已经支持 OpenAI 最新的 [`gpt-4-vision`](https://platform.openai.com/docs/guides/vision) 支持视觉识别的模型，这是一个具备视觉识别能力的多模态智能。
 用户可以轻松上传图片或者拖拽图片到对话框中，助手将能够识别图片内容，并在此基础上进行智能对话，构建更智能、更多元化的聊天场景。
 
 这一特性打开了新的互动方式，使得交流不再局限于文字，而是可以涵盖丰富的视觉元素。无论是日常使用中的图片分享，还是在特定行业内的图像解读，助手都能提供出色的对话体验。
@@ -107,10 +107,10 @@ LobeChat 已经支持 OpenAI 最新的 [`gpt-4-vsion`](https://platform.openai.c
 
 ![](https://github-production-user-asset-6210df.s3.amazonaws.com/17870709/284072124-c9853d8d-f1b5-44a8-a305-45ebc0f6d19a.png)
 
-LobeChat 支持文字转语音（Text-to-Speech，TTS）和语音转文字（Speech-to-Text，STT）技术，我们的应用能够将文本信息转化为清晰的语音输出，用户可以像与真人交谈一样与我们的对话代理进行交流。
+微帝国AI 支持文字转语音（Text-to-Speech，TTS）和语音转文字（Speech-to-Text，STT）技术，我们的应用能够将文本信息转化为清晰的语音输出，用户可以像与真人交谈一样与我们的对话代理进行交流。
 用户可以从多种声音中选择，给助手搭配合适的音源。 同时，对于那些倾向于听觉学习或者想要在忙碌中获取信息的用户来说，TTS 提供了一个极佳的解决方案。
 
-在 LobeChat 中，我们精心挑选了一系列高品质的声音选项 (OpenAI Audio, Microsoft Edge Speech)，以满足不同地域和文化背景用户的需求。用户可以根据个人喜好或者特定场景来选择合适的语音，从而获得个性化的交流体验。
+在 微帝国AI 中，我们精心挑选了一系列高品质的声音选项 (OpenAI Audio, Microsoft Edge Speech)，以满足不同地域和文化背景用户的需求。用户可以根据个人喜好或者特定场景来选择合适的语音，从而获得个性化的交流体验。
 
 > \[!NOTE]
 >
@@ -130,10 +130,12 @@ LobeChat 支持文字转语音（Text-to-Speech，TTS）和语音转文字（Spe
 
 #### `3` Function Calling 插件系统
 
-LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地增强了 ChatGPT 的实用性和灵活性。通过利用插件，ChatGPT 能够实现实时信息的获取和处理，例如自动获取最新新闻头条，为用户提供即时且相关的资讯。
+微帝国AI 的插件生态系统是其核心功能的重要扩展，它极大地增强了 ChatGPT 的实用性和灵活性。通过利用插件，ChatGPT 能够实现实时信息的获取和处理，例如自动获取最新新闻头条，为用户提供即时且相关的资讯。
 此外，这些插件不仅局限于新闻聚合，还可以扩展到其他实用的功能，如快速检索文档、获取电商平台数据、以及其他各式各样的第三方服务。
 
-<https://github.com/lobehub/lobe-chat/assets/28616219/f29475a3-f346-4196-a435-41a6373ab9e2>
+[了解更多 →](./docs/Usage/Plugins.zh-CN.md)
+
+<video controls src="https://github.com/lobehub/lobe-chat/assets/28616219/f29475a3-f346-4196-a435-41a6373ab9e2" muted="false"></video>
 
 > \[!TIP]
 >
@@ -146,14 +148,14 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
 
 <!-- PLUGIN LIST -->
 
-| 官方插件                                                                                                    | 仓库                                                                                            | 插件描述                                     |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| [时钟时间](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **LobeHub** on **2023-11-01**</sup> | [lobehub/chat-plugin-clock-time](https://github.com/lobehub/chat-plugin-clock-time)             | 显示一个时钟来展示当前时间<br/>`时钟` `时间` |
-| [网站爬虫](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **LobeHub** on **2023-08-17**</sup> | [lobehub/chat-plugin-web-crawler](https://github.com/lobehub/chat-plugin-web-crawler)           | 从网页链接中提取内容<br/>`网页` `内容爬取器` |
-| [搜索引擎](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **LobeHub** on **2023-08-15**</sup> | [lobehub/chat-plugin-search-engine](https://github.com/lobehub/chat-plugin-search-engine)       | 查询搜索引擎以获取信息<br/>`网络` `搜索`     |
-| [实时天气](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **LobeHub** on **2023-08-12**</sup> | [lobehub/chat-plugin-realtime-weather](https://github.com/lobehub/chat-plugin-realtime-weather) | 获取实时天气信息<br/>`天气` `实时`           |
+| 最近新增                                                                                                        | 插件描述                                                                                   |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [天气 GPT](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **Steven Tey** on **2023-12-16**</sup>  | 获取特定位置的当前天气信息。<br/>`天气`                                                    |
+| [AskYouPDF](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **AskYourPDF** on **2023-12-16**</sup> | 释放您的 PDF 的力量！深入您的文档，找到答案，并将信息带到您的指尖。<br/>`pdf` `文档` `web` |
+| [时钟时间](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **微帝国AI** on **2023-11-01**</sup>     | 显示一个时钟来展示当前时间<br/>`时钟` `时间`                                               |
+| [思维导图](https://chat-preview.lobehub.com/settings/agent)<br/><sup>By **Moonlit7** on **2023-12-19**</sup>    | 思维导图生成助手<br/>`思维导图` `脑图`                                                     |
 
-> 📊 Total plugins: [<kbd>**5**</kbd>](https://github.com/lobehub/lobe-chat-plugins)
+> 📊 Total plugins: [<kbd>**9**</kbd>](https://github.com/lobehub/lobe-chat-plugins)
 
  <!-- PLUGIN LIST -->
 
@@ -167,12 +169,12 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
 
 #### `4` 助手市场
 
-在 LobeChat 的助手市场中，创作者们可以发现一个充满活力和创新的社区，它汇聚了众多精心设计的助手，这些助手不仅在工作场景中发挥着重要作用，也在学习过程中提供了极大的便利。
+在 微帝国AI 的助手市场中，创作者们可以发现一个充满活力和创新的社区，它汇聚了众多精心设计的助手，这些助手不仅在工作场景中发挥着重要作用，也在学习过程中提供了极大的便利。
 我们的市场不仅是一个展示平台，更是一个协作的空间。在这里，每个人都可以贡献自己的智慧，分享个人开发的助手。
 
 > \[!TIP]
 >
-> 通过 [🤖/🏪 提交助手][submit-agents-link] ，你可以轻松地将你的助手作品提交到我们的平台。我们特别强调的是，LobeChat 建立了一套精密的自动化国际化（i18n）工作流程， 它的强大之处在于能够无缝地将你的助手转化为多种语言版本。
+> 通过 [🤖/🏪 提交助手][submit-agents-link] ，你可以轻松地将你的助手作品提交到我们的平台。我们特别强调的是，微帝国AI 建立了一套精密的自动化国际化（i18n）工作流程， 它的强大之处在于能够无缝地将你的助手转化为多种语言版本。
 > 这意味着，不论你的用户使用何种语言，他们都能无障碍地体验到你的助手。
 
 > \[!IMPORTANT]
@@ -181,14 +183,14 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
 
 <!-- AGENT LIST -->
 
-| 最近新增                                                                                                                                                               | 助手说明                                                                                                                                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [梦境分析师](https://chat-preview.lobehub.com/market?agent=dream-psychoanalyst)<br/><sup>By **[ghyghoo8](https://github.com/ghyghoo8)** on **2023-12-13**</sup>        | 输入一段梦境，帮你分析分析<br/>`dream` `master` `think`                                                                                                                                                                                          |
-| [工资谈判游戏](https://chat-preview.lobehub.com/market?agent=payroll-game)<br/><sup>By **[ghyghoo8](https://github.com/ghyghoo8)** on **2023-12-13**</sup>             | 在这个工资谈判游戏中，你将面对臭名昭著的 “铁公鸡” 老板，他以吝啬著称。作为员工，你的挑战是说服这位老板给你加薪。然而，无论你的论点多么合理，“铁公鸡” 总能找到拒绝它们的理由。准备好你的论点，迎接一场聪明幽默的对决吧！<br/>`游戏` `老板` `工资` |
-| [Python Gradio 代码师](https://chat-preview.lobehub.com/market?agent=gradio-coding)<br/><sup>By **[Igroshka](https://github.com/Igroshka)** on **2023-12-12**</sup>    | 具有与 Hugging Face 合作的 Gradio 经验的 Python 程序员。<br/>`编程` `助手` `python`                                                                                                                                                              |
-| [英文翻译专家](https://chat-preview.lobehub.com/market?agent=translate-eng-expert)<br/><sup>By **[caolixiang](https://github.com/caolixiang)** on **2023-12-12**</sup> | 完美翻译<br/>`translate` `expert` `english`                                                                                                                                                                                                      |
+| 最近新增                                                                                                                                                                     | 助手说明                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Flutter 开发专家](https://chat-preview.lobehub.com/market?agent=flutter-dev)<br/><sup>By **[kamaravichow](https://github.com/kamaravichow)** on **2023-12-25**</sup>        | 一位精通 Flutter 框架和 Dart 编程语言的开发者<br/>`flutter` `development` `dart` `programming` `widgets`                                                      |
+| [Facebook 广告专家](https://chat-preview.lobehub.com/market?agent=facebook-ads-expert)<br/><sup>By **[alissonryan](https://github.com/alissonryan)** on **2023-12-20**</sup> | 与专家一起创建 Facebook 广告<br/>`文案撰写` `facebook广告` `潜在客户生成`                                                                                     |
+| [梦境画家](https://chat-preview.lobehub.com/market?agent=dream-painter)<br/><sup>By **[ccdanpian](https://github.com/ccdanpian)** on **2023-12-19**</sup>                    | 一位能将你的梦想变成现实的梦境艺术家。<br/>`txt-2-img` `painter`                                                                                              |
+| [新闻搜索助手](https://chat-preview.lobehub.com/market?agent=news-hub)<br/><sup>By **[ccdanpian](https://github.com/ccdanpian)** on **2023-12-19**</sup>                     | 新闻搜索助手，精通根据用户需求查找和呈现相关新闻。不仅能够搜索新闻，还可以根据用户的要求转变为不同领域的专家，提供精确深入的新闻解读<br/>`新闻` `搜索` `助手` |
 
-> 📊 Total agents: [<kbd>**63**</kbd> ](https://github.com/lobehub/lobe-chat-agents)
+> 📊 Total agents: [<kbd>**78**</kbd> ](https://github.com/lobehub/lobe-chat-agents)
 
  <!-- AGENT LIST -->
 
@@ -203,15 +205,15 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
 #### `5` PWA 渐进式 Web 应用
 
 我们利深知在当今多设备环境下为用户提供无缝体验的重要性。为此，我们采用了渐进式 Web 应用 [PWA](https://support.google.com/chrome/answer/9658361) 技术，
-这是一种能够将网页应用提升至接近原生应用体验的现代 Web 技术。通过 PWA，LobeChat 能够在桌面和移动设备上提供高度优化的用户体验，同时保持轻量级和高性能的特点。
+这是一种能够将网页应用提升至接近原生应用体验的现代 Web 技术。通过 PWA，微帝国AI 能够在桌面和移动设备上提供高度优化的用户体验，同时保持轻量级和高性能的特点。
 在视觉和感觉上，我们也经过精心设计，以确保它的界面与原生应用无差别，提供流畅的动画、响应式布局和适配不同设备的屏幕分辨率。
 
 > \[!NOTE]
 >
-> 若您未熟悉 PWA 的安装过程，您可以按照以下步骤将 LobeChat 添加为您的桌面应用（也适用于移动设备）：
+> 若您未熟悉 PWA 的安装过程，您可以按照以下步骤将 微帝国AI 添加为您的桌面应用（也适用于移动设备）：
 >
 > - 在电脑上运行 Chrome 或 Edge 浏览器 .
-> - 访问 LobeChat 网页 .
+> - 访问 微帝国AI 网页 .
 > - 在地址栏的右上角，单击 <kbd>安装</kbd> 图标 .
 > - 根据屏幕上的指示完成 PWA 的安装 .
 
@@ -237,12 +239,12 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
 
 #### `7` 主题模式选择
 
-作为设计工程师出身 LobeChat 在界面设计上十分考虑用户的个性化体验，因此引入了灵活多变的主题模式，其中包括日间的亮色模式和夜间的深色模式。
-除了主题模式的切换，提供了一系列的颜色定制选项，允许用户根据自己的喜好来调整应用的主题色彩。无论是想要沉稳的深蓝，还是希望活泼的桃粉，或者是专业的灰白，用户都能够在 LobeChat 中找到匹配自己风格的颜色选择。
+作为设计工程师出身 微帝国AI 在界面设计上十分考虑用户的个性化体验，因此引入了灵活多变的主题模式，其中包括日间的亮色模式和夜间的深色模式。
+除了主题模式的切换，提供了一系列的颜色定制选项，允许用户根据自己的喜好来调整应用的主题色彩。无论是想要沉稳的深蓝，还是希望活泼的桃粉，或者是专业的灰白，用户都能够在 微帝国AI 中找到匹配自己风格的颜色选择。
 
 > \[!TIP]
 >
-> 默认配置能够智能地识别用户系统的颜色模式，自动进行主题切换，以确保应用界面与操作系统保持一致的视觉体验。对于喜欢手动调控细节的用户，LobeChat 同样提供了直观的设置选项，针对聊天场景也提供了对话气泡模式和文档模式的选择。
+> 默认配置能够智能地识别用户系统的颜色模式，自动进行主题切换，以确保应用界面与操作系统保持一致的视觉体验。对于喜欢手动调控细节的用户，微帝国AI 同样提供了直观的设置选项，针对聊天场景也提供了对话气泡模式和文档模式的选择。
 
 <div align="right">
 
@@ -293,11 +295,11 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
 
 ## 🛳 开箱即用
 
-LobeChat 提供了 Vercel 的 自托管版本 和 [Docker 镜像][docker-release-link]，这使你可以在几分钟内构建自己的聊天机器人，无需任何基础知识。
+微帝国AI 提供了 Vercel 的 自托管版本 和 [Docker 镜像][docker-release-link]，这使你可以在几分钟内构建自己的聊天机器人，无需任何基础知识。
 
 <br/>
 
-### `A` 使用 Vercel 或 Zeabur 部署
+### `A` 使用 Vercel、Zeabur 或 Sealos 部署
 
 如果想在 Vercel 或 Zeabur 上部署该服务，可以按照以下步骤进行操作：
 
@@ -308,9 +310,9 @@ LobeChat 提供了 Vercel 的 自托管版本 和 [Docker 镜像][docker-release
 
 <div align="center">
 
-|            使用 Vercel 部署             |                      使用 Zeabur 部署                       |
-| :-------------------------------------: | :---------------------------------------------------------: |
-| [![][deploy-button-image]][deploy-link] | [![][deploy-on-zeabur-button-image]][deploy-on-zeabur-link] |
+|            使用 Vercel 部署             |                      使用 Zeabur 部署                       |                      使用 Sealos 部署                       |
+| :-------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: |
+| [![][deploy-button-image]][deploy-link] | [![][deploy-on-zeabur-button-image]][deploy-on-zeabur-link] | [![][deploy-on-sealos-button-image]][deploy-on-sealos-link] |
 
 </div>
 
@@ -320,7 +322,7 @@ LobeChat 提供了 Vercel 的 自托管版本 和 [Docker 镜像][docker-release
 
 > \[!TIP]
 >
-> 我们建议按照 [📘 LobeChat 自部署保持更新](https://github.com/lobehub/lobe-chat/wiki/Upstream-Sync.zh-CN) 步骤重新部署。
+> 我们建议按照 [📘 微帝国AI 自部署保持更新](https://github.com/lobehub/lobe-chat/wiki/Upstream-Sync.zh-CN) 步骤重新部署。
 
 <br/>
 
@@ -330,7 +332,7 @@ LobeChat 提供了 Vercel 的 自托管版本 和 [Docker 镜像][docker-release
 [![][docker-size-shield]][docker-size-link]
 [![][docker-pulls-shield]][docker-pulls-link]
 
-我们提供了 Docker 镜像，供你在自己的私有设备上部署 LobeChat 服务。使用以下命令即可使用一键启动 LobeChat 服务：
+我们提供了 Docker 镜像，供你在自己的私有设备上部署 微帝国AI 服务。使用以下命令即可使用一键启动 微帝国AI 服务：
 
 ```fish
 $ docker run -d -p 3210:3210 \
@@ -361,12 +363,12 @@ $ docker run -d -p 3210:3210 \
 
 本项目提供了一些额外的配置项，使用环境变量进行设置：
 
-| 环境变量                  | 类型 | 描述                                                                                                                                                            | 示例                                                                         |
-| ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `OPENAI_API_KEY`          | 必选 | 这是你在 OpenAI 账户页面申请的 API 密钥                                                                                                                         | `sk-xxxxxx...xxxxxx`                                                         |
-| `OPENAI_PROXY_URL`        | 可选 | 如果你手动配置了 OpenAI 接口代理，可以使用此配置项来覆盖默认的 OpenAI API 请求基础 URL                                                                          | `https://api.chatanywhere.cn/v1`<br/>默认值:<br/>`https://api.openai.com/v1` |
-| `OPENAI_FUNCTION_REGIONS` | 可选 | 当你使用 Vercel 部署 Lobe-Chat，而且有需求指定响应调用 OpenAI 接口的请求的 Edge Function 的 Region 时，可以使用该配置进行配置，该值的类型为逗号分隔的字符串数组 | `iad1,sfo1`                                                                  |
-| `ACCESS_CODE`             | 可选 | 添加访问此服务的密码，你可以设置一个长密码以防被爆破                                                                                                            | `awCTe)re_r74` or `rtrt_ewee3@09!`                                           |
+| 环境变量           | 类型 | 描述                                                                                                                          | 示例                                                                         |
+| ------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `OPENAI_API_KEY`   | 必选 | 这是你在 OpenAI 账户页面申请的 API 密钥                                                                                       | `sk-xxxxxx...xxxxxx`                                                         |
+| `OPENAI_PROXY_URL` | 可选 | 如果你手动配置了 OpenAI 接口代理，可以使用此配置项来覆盖默认的 OpenAI API 请求基础 URL                                        | `https://api.chatanywhere.cn/v1`<br/>默认值:<br/>`https://api.openai.com/v1` |
+| `ACCESS_CODE`      | 可选 | 添加访问此服务的密码，你可以设置一个长密码以防被爆破，该值用逗号分隔时为密码数组                                              | `awCTe)re_r74` or `rtrt_ewee3@09!` or `code1,code2,code3`                    |
+| `CUSTOM_MODELS`    | 可选 | 用来控制模型列表，使用 `+` 增加一个模型，使用 `-` 来隐藏一个模型，使用 `模型名=展示名` 来自定义模型的展示名，用英文逗号隔开。 | `qwen-7b-chat,+glm-6b,-gpt-3.5-turbo`                                        |
 
 > \[!NOTE]
 >
@@ -384,8 +386,8 @@ $ docker run -d -p 3210:3210 \
 | ------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | [@lobehub/ui][lobe-ui-link]     | [lobehub/lobe-ui][lobe-ui-github]     | Lobe UI 是一个专为构建 AIGC 网页应用程序而设计的开源 UI 组件库。                                      | [![][lobe-ui-shield]][lobe-ui-link]     |
 | [@lobehub/tts][lobe-tts-link]   | [lobehub/lobe-tts][lobe-tts-github]   | Lobe TTS 是一个专为 TTS/STT 建设的语音合成 / 识别 React Hooks 库                                      | [![][lobe-tts-shield]][lobe-tts-link]   |
-| [@lobehub/lint][lobe-lint-link] | [lobehub/lobe-lint][lobe-lint-github] | LobeLint 为 LobeHub 提供 ESlint，Stylelint，Commitlint，Prettier，Remark 和 Semantic Release 的配置。 | [![][lobe-lint-shield]][lobe-lint-link] |
-| @lobehub/assets                 | [lobehub/assets][lobe-assets-github]  | LobeHub 的 Logo 资源、favicon、网页字体。                                                             |                                         |
+| [@lobehub/lint][lobe-lint-link] | [lobehub/lobe-lint][lobe-lint-github] | LobeLint 为 微帝国AI 提供 ESlint，Stylelint，Commitlint，Prettier，Remark 和 Semantic Release 的配置。 | [![][lobe-lint-shield]][lobe-lint-link] |
+| @lobehub/assets                 | [lobehub/assets][lobe-assets-github]  | 微帝国AI 的 Logo 资源、favicon、网页字体。                                                             |                                         |
 
 <div align="right">
 
@@ -395,12 +397,12 @@ $ docker run -d -p 3210:3210 \
 
 ## 🧩 插件体系
 
-插件提供了扩展 LobeChat [Function Calling][fc-link] 能力的方法。可以用于引入新的 Function Calling，甚至是新的消息结果渲染方式。如果你对插件开发感兴趣，请在 Wiki 中查阅我们的 [📘 插件开发指引](https://github.com/lobehub/lobe-chat/wiki/Plugin-Development.zh-CN) 。
+插件提供了扩展 微帝国AI [Function Calling][fc-link] 能力的方法。可以用于引入新的 Function Calling，甚至是新的消息结果渲染方式。如果你对插件开发感兴趣，请在 Wiki 中查阅我们的 [📘 插件开发指引](https://github.com/lobehub/lobe-chat/wiki/Plugin-Development.zh-CN) 。
 
-- [lobe-chat-plugins][lobe-chat-plugins]：这是 LobeChat 的插件索引。它从该仓库的 index.json 中获取插件列表并显示给用户。
+- [lobe-chat-plugins][lobe-chat-plugins]：这是 微帝国AI 的插件索引。它从该仓库的 index.json 中获取插件列表并显示给用户。
 - [chat-plugin-template][chat-plugin-template]: Chat Plugin 插件开发模版，你可以通过项目模版快速新建插件项目。
-- [@lobehub/chat-plugin-sdk][chat-plugin-sdk]：LobeChat 插件 SDK 可帮助您创建出色的 Lobe Chat 插件。
-- [@lobehub/chat-plugins-gateway][chat-plugins-gateway]：LobeChat 插件网关是一个后端服务，作为 LobeChat 插件的网关。我们使用 Vercel 部署此服务。主要的 API POST /api/v1/runner 被部署为 Edge Function。
+- [@lobehub/chat-plugin-sdk][chat-plugin-sdk]：微帝国AI 插件 SDK 可帮助您创建出色的 Lobe Chat 插件。
+- [@lobehub/chat-plugins-gateway][chat-plugins-gateway]：微帝国AI 插件网关是一个后端服务，作为 微帝国AI 插件的网关。我们使用 Vercel 部署此服务。主要的 API POST /api/v1/runner 被部署为 Edge Function。
 
 > \[!NOTE]
 >
@@ -491,8 +493,8 @@ $ bun run dev
 
 <a href="https://opencollective.com/lobehub" target="_blank">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://readme-wizard.lobehub.com/api/sponsor?themeMode=dark">
-    <img  src="https://readme-wizard.lobehub.com/api/sponsor">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/lobehub/.github/blob/main/static/sponsor-dark.png?raw=true">
+    <img  src="https://github.com/lobehub/.github/blob/main/static/sponsor-light.png?raw=true">
   </picture>
 </a>
 
@@ -522,7 +524,7 @@ $ bun run dev
 
 </details>
 
-Copyright © 2023 [LobeHub][profile-link]. <br />
+Copyright © 2023 [微帝国AI][profile-link]. <br />
 This project is [MIT](./LICENSE) licensed.
 
 <!-- LINK GROUP -->
@@ -541,6 +543,8 @@ This project is [MIT](./LICENSE) licensed.
 [codespaces-shield]: https://github.com/codespaces/badge.svg
 [deploy-button-image]: https://vercel.com/button
 [deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat&env=OPENAI_API_KEY&envDescription=Find%20your%20OpenAI%20API%20Key%20by%20click%20the%20right%20Learn%20More%20button.&envLink=https%3A%2F%2Fplatform.openai.com%2Faccount%2Fapi-keys&project-name=lobe-chat&repository-name=lobe-chat
+[deploy-on-sealos-button-image]: https://raw.githubusercontent.com/labring-actions/templates/main/Deploy-on-Sealos.svg
+[deploy-on-sealos-link]: https://cloud.sealos.io/?openapp=system-template%3FtemplateName%3Dlobe-chat
 [deploy-on-zeabur-button-image]: https://zeabur.com/button.svg
 [deploy-on-zeabur-link]: https://zeabur.com/templates/VZGGTI
 [discord-link]: https://discord.gg/AYFPHvv2jT
@@ -593,18 +597,18 @@ This project is [MIT](./LICENSE) licensed.
 [pr-welcome-link]: https://github.com/lobehub/lobe-chat/pulls
 [pr-welcome-shield]: https://img.shields.io/badge/🤯_pr_welcome-%E2%86%92-ffcb47?labelColor=black&style=for-the-badge
 [profile-link]: https://github.com/lobehub
-[share-reddit-link]: https://www.reddit.com/submit?title=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20LobeChat%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20%23chatbot%20%23chatGPT%20%23openAI&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
+[share-reddit-link]: https://www.reddit.com/submit?title=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20微帝国AI%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20%23chatbot%20%23chatGPT%20%23openAI&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
 [share-reddit-shield]: https://img.shields.io/badge/-share%20on%20reddit-black?labelColor=black&logo=reddit&logoColor=white&style=flat-square
-[share-telegram-link]: https://t.me/share/url"?text=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20LobeChat%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20%23chatbot%20%23chatGPT%20%23openAI&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
+[share-telegram-link]: https://t.me/share/url"?text=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20微帝国AI%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20%23chatbot%20%23chatGPT%20%23openAI&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
 [share-telegram-shield]: https://img.shields.io/badge/-share%20on%20telegram-black?labelColor=black&logo=telegram&logoColor=white&style=flat-square
-[share-weibo-link]: http://service.weibo.com/share/share.php?sharesource=weibo&title=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20LobeChat%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20%23chatbot%20%23chatGPT%20%23openAI&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
+[share-weibo-link]: http://service.weibo.com/share/share.php?sharesource=weibo&title=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20微帝国AI%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20%23chatbot%20%23chatGPT%20%23openAI&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
 [share-weibo-shield]: https://img.shields.io/badge/-share%20on%20weibo-black?labelColor=black&logo=sinaweibo&logoColor=white&style=flat-square
-[share-whatsapp-link]: https://api.whatsapp.com/send?text=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20LobeChat%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat%20%23chatbot%20%23chatGPT%20%23openAI
+[share-whatsapp-link]: https://api.whatsapp.com/send?text=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20微帝国AI%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%20https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat%20%23chatbot%20%23chatGPT%20%23openAI
 [share-whatsapp-shield]: https://img.shields.io/badge/-share%20on%20whatsapp-black?labelColor=black&logo=whatsapp&logoColor=white&style=flat-square
-[share-x-link]: https://x.com/intent/tweet?hashtags=chatbot%2CchatGPT%2CopenAI&text=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20LobeChat%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
+[share-x-link]: https://x.com/intent/tweet?hashtags=chatbot%2CchatGPT%2CopenAI&text=%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%20GitHub%20%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%20%F0%9F%A4%AF%20微帝国AI%20-%20%E5%BC%80%E6%BA%90%E7%9A%84%E3%80%81%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%EF%BC%88Function%20Calling%EF%BC%89%E9%AB%98%E6%80%A7%E8%83%BD%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%86%E6%9E%B6%E3%80%82%0A%E5%AE%83%E6%94%AF%E6%8C%81%E4%B8%80%E9%94%AE%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E7%A7%81%E4%BA%BA%20ChatGPT%2FLLM%20%E7%BD%91%E9%A1%B5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F&url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat
 [share-x-shield]: https://img.shields.io/badge/-share%20on%20x-black?labelColor=black&logo=x&logoColor=white&style=flat-square
-[sponsor-link]: https://opencollective.com/lobehub 'Become 🩷 LobeHub Sponsor'
-[sponsor-shield]: https://img.shields.io/badge/-Sponsor%20LobeHub-f04f88?logo=opencollective&logoColor=white&style=flat-square
+[sponsor-link]: https://opencollective.com/lobehub 'Become 🩷 微帝国AI Sponsor'
+[sponsor-shield]: https://img.shields.io/badge/-Sponsor%20微帝国AI-f04f88?logo=opencollective&logoColor=white&style=flat-square
 [submit-agents-link]: https://github.com/lobehub/lobe-chat-agents
 [submit-agents-shield]: https://img.shields.io/badge/🤖/🏪_submit_agent-%E2%86%92-c4f042?labelColor=black&style=for-the-badge
 [submit-plugin-link]: https://github.com/lobehub/lobe-chat-plugins

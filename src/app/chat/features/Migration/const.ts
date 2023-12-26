@@ -6,7 +6,7 @@ export enum UpgradeStatus {
   UPGRADE_FAILED,
 }
 
-export const V1DB_NAME = 'LobeHub';
+export const V1DB_NAME = '微帝国AI';
 export const V1DB_TABLE_NAME = 'LOBE_CHAT';
 
 export interface MigrationError {

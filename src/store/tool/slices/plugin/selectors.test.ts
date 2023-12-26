@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@lobehub/chat-plugin-sdk';
+import { 微帝国AIPluginManifest, 微帝国AIPluginMeta } from '@lobehub/chat-plugin-sdk';
 import { describe, expect, it } from 'vitest';
 
 import { initialState } from '../../initialState';
@@ -19,7 +19,7 @@ const mockState = {
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
         type: 'default',
-      } as LobeChatPluginManifest,
+      } as 微帝国AIPluginManifest,
       settings: { setting1: 'value1' },
     },
     {
@@ -27,9 +27,16 @@ const mockState = {
       manifest: {
         identifier: 'plugin-2',
         api: [{ name: 'api-2' }],
-        type: 'default',
       },
       type: 'plugin',
+    },
+    {
+      identifier: 'plugin-3',
+      manifest: {
+        identifier: 'plugin-3',
+        api: [{ name: 'api-3' }],
+      },
+      type: 'customPlugin',
     },
   ],
   pluginStoreList: [
@@ -39,7 +46,7 @@ const mockState = {
       createdAt: '2021-01-01',
       meta: { avatar: 'avatar-url-1', title: 'Plugin 1' },
       homepage: 'http://homepage-1.com',
-    } as LobeChatPluginMeta,
+    } as 微帝国AIPluginMeta,
     {
       identifier: 'plugin-2',
       author: 'Author 2',
@@ -51,17 +58,6 @@ const mockState = {
 } as ToolStoreState;
 
 describe('pluginSelectors', () => {
-  describe('enabledSchema', () => {
-    it('enabledSchema should return correct ChatCompletionFunctions array', () => {
-      const result = pluginSelectors.enabledSchema(['plugin-1'])(mockState);
-      expect(result).toEqual([{ name: 'plugin-1____api-1____default' }]);
-    });
-    it('enabledSchema should return empty', () => {
-      const result = pluginSelectors.enabledSchema([])(mockState);
-      expect(result).toEqual([]);
-    });
-  });
-
   describe('getPluginManifestById', () => {
     it('getPluginManifestById should return the correct manifest', () => {
       const result = pluginSelectors.getPluginManifestById('plugin-1')(mockState);
@@ -164,28 +160,10 @@ describe('pluginSelectors', () => {
     });
   });
 
-  describe('getPluginManifestLoadingStatus', () => {
-    it('should return "loading" if the plugin manifest is being loaded', () => {
-      const result = pluginSelectors.getPluginManifestLoadingStatus('plugin-2')(mockState);
-      expect(result).toBe('loading');
-    });
-
-    it('should return "error" if the plugin manifest is not found', () => {
-      const result =
-        pluginSelectors.getPluginManifestLoadingStatus('non-existing-plugin')(mockState);
-      expect(result).toBe('error');
-    });
-
-    it('should return "success" if the plugin manifest is loaded', () => {
-      const result = pluginSelectors.getPluginManifestLoadingStatus('plugin-1')(mockState);
-      expect(result).toBe('success');
-    });
-  });
-
   describe('storeAndInstallPluginsIdList', () => {
     it('should return a list of unique plugin identifiers from both installed and store lists', () => {
       const result = pluginSelectors.storeAndInstallPluginsIdList(mockState);
-      expect(result).toEqual(['plugin-1', 'plugin-2']);
+      expect(result).toEqual(['plugin-1', 'plugin-2', 'plugin-3']);
     });
   });
 
@@ -206,6 +184,14 @@ describe('pluginSelectors', () => {
         type: p.type,
       }));
       expect(result).toEqual(expectedMetaList);
+    });
+  });
+
+  describe('installedCustomPluginMetaList', () => {
+    it('should return a list of meta information for installed plugins', () => {
+      const result = pluginSelectors.installedCustomPluginMetaList(mockState);
+
+      expect(result).toEqual([{ identifier: 'plugin-3', type: 'customPlugin' }]);
     });
   });
 });

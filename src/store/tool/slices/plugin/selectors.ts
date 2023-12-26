@@ -1,9 +1,7 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
-import { uniq, uniqBy } from 'lodash-es';
+import { 微帝国AIPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { uniq } from 'lodash-es';
 
-import { PLUGIN_SCHEMA_SEPARATOR } from '@/const/plugin';
-import { ChatCompletionFunctions } from '@/types/openai/chat';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { InstallPluginMeta, LobeToolCustomPlugin } from '@/types/tool/plugin';
 
 import type { ToolStoreState } from '../../initialState';
 
@@ -35,17 +33,6 @@ const getPluginManifestById = (id: string) => (s: ToolStoreState) =>
 const getPluginSettingsById = (id: string) => (s: ToolStoreState) =>
   getInstalledPluginById(id)(s)?.settings || {};
 
-// 获取插件 manifest 加载状态
-const getPluginManifestLoadingStatus = (id: string) => (s: ToolStoreState) => {
-  const manifest = getPluginManifestById(id)(s);
-
-  if (s.pluginInstallLoading[id]) return 'loading';
-
-  if (!manifest) return 'error';
-
-  if (!!manifest) return 'success';
-};
-
 const storeAndInstallPluginsIdList = (s: ToolStoreState) =>
   uniq(
     [
@@ -56,15 +43,20 @@ const storeAndInstallPluginsIdList = (s: ToolStoreState) =>
 
 const installedPluginManifestList = (s: ToolStoreState) =>
   installedPlugins(s)
-    .map((i) => i.manifest as LobeChatPluginManifest)
+    .map((i) => i.manifest as 微帝国AIPluginManifest)
     .filter((i) => !!i);
 
 const installedPluginMetaList = (s: ToolStoreState) =>
-  installedPlugins(s).map((p) => ({
+  installedPlugins(s).map<InstallPluginMeta>((p) => ({
+    author: p.manifest?.author,
+    createdAt: p.manifest?.createdAt || (p.manifest as any)?.createAt,
+    homepage: p.manifest?.homepage,
     identifier: p.identifier,
     meta: getPluginMetaById(p.identifier)(s),
     type: p.type,
   }));
+const installedCustomPluginMetaList = (s: ToolStoreState) =>
+  installedPluginMetaList(s).filter((p) => p.type === 'customPlugin');
 
 const isPluginHasUI = (id: string) => (s: ToolStoreState) => {
   const plugin = getPluginManifestById(id)(s);
@@ -72,42 +64,13 @@ const isPluginHasUI = (id: string) => (s: ToolStoreState) => {
   return !!plugin?.ui;
 };
 
-const enabledSchema =
-  (enabledPlugins: string[] = []) =>
-  (s: ToolStoreState): ChatCompletionFunctions[] => {
-    // 如果不存在 enabledPlugins，那么全部不启用
-    if (!enabledPlugins) return [];
-
-    const list = installedPluginManifestList(s)
-      .filter((m) =>
-        // 如果存在 enabledPlugins，那么只启用 enabledPlugins 中的插件
-        enabledPlugins.includes(m?.identifier),
-      )
-      .flatMap((manifest) =>
-        manifest.api.map((m) => {
-          const pluginType = manifest.type ? `${PLUGIN_SCHEMA_SEPARATOR + manifest.type}` : '';
-
-          // 将插件的 identifier 作为前缀，避免重复
-          const apiName = manifest.identifier + PLUGIN_SCHEMA_SEPARATOR + m.name + pluginType;
-
-          return {
-            ...m,
-            name: apiName,
-          };
-        }),
-      );
-
-    return uniqBy(list, 'name');
-  };
-
 export const pluginSelectors = {
-  enabledSchema,
   getCustomPluginById,
   getInstalledPluginById,
   getPluginManifestById,
-  getPluginManifestLoadingStatus,
   getPluginMetaById,
   getPluginSettingsById,
+  installedCustomPluginMetaList,
   installedPluginManifestList,
   installedPluginMetaList,
   installedPlugins,

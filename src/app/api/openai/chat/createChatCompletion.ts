@@ -5,10 +5,9 @@ import { ChatErrorType } from '@/types/fetch';
 import { OpenAIChatStreamPayload } from '@/types/openai/chat';
 
 import { createErrorResponse } from '../errorResponse';
-import { GenerativeModel } from '@google/generative-ai';
 
 interface CreateChatCompletionOptions {
-  openai: OpenAI | GenerativeModel;
+  openai: OpenAI;
   payload: OpenAIChatStreamPayload;
 }
 
@@ -19,36 +18,16 @@ export const createChatCompletion = async ({ payload, openai }: CreateChatComple
   // ============  2. send api   ============ //
 
   try {
-    if (openai instanceof OpenAI) {
-      const response = await openai.chat.completions.create(
-        {
-          messages,
-          ...params,
-          stream: true,
-        } as unknown as OpenAI.ChatCompletionCreateParamsStreaming,
-        { headers: { Accept: '*/*' } },
-      );
-      const stream = OpenAIStream(response);
-      return new StreamingTextResponse(stream);
-    } else {
-      const response = await openai.generateContent({
-        contents: messages.map(item => {
-          return {
-            parts: [
-              {
-                text: item.content.toString()
-              }
-            ],
-            role: item.role
-          }
-        }) as any
-      });
-      
-      return response.response.text
-      // const stream = OpenAIStream(response);
-      // return new StreamingTextResponse(stream);
-    }
-    
+    const response = await openai.chat.completions.create(
+      {
+        messages,
+        ...params,
+        stream: true,
+      } as unknown as OpenAI.ChatCompletionCreateParamsStreaming,
+      { headers: { Accept: '*/*' } },
+    );
+    const stream = OpenAIStream(response);
+    return new StreamingTextResponse(stream);
   } catch (error) {
     // Check if the error is an OpenAI APIError
     if (error instanceof OpenAI.APIError) {

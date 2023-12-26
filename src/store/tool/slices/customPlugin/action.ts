@@ -14,9 +14,6 @@ import { defaultCustomPlugin } from './initialState';
 
 const n = setNamespace('customPlugin');
 
-/**
- * 代理行为接口
- */
 export interface CustomPluginAction {
   installCustomPlugin: (value: LobeToolCustomPlugin) => Promise<void>;
   reinstallCustomPlugin: (id: string) => Promise<void>;
@@ -44,7 +41,10 @@ export const createCustomPluginSlice: StateCreator<
     const { refreshPlugins, updateInstallLoadingState } = get();
     try {
       updateInstallLoadingState(id, true);
-      const manifest = await pluginService.getPluginManifest(plugin.customParams?.manifestUrl);
+      const manifest = await pluginService.getPluginManifest(
+        plugin.customParams?.manifestUrl,
+        plugin.customParams?.useProxy,
+      );
       updateInstallLoadingState(id, false);
 
       await pluginService.updatePluginManifest(id, manifest);

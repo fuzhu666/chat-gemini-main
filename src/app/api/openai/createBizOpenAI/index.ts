@@ -9,13 +9,11 @@ import { createErrorResponse } from '../errorResponse';
 import { createAzureOpenai } from './createAzureOpenai';
 import { createOpenai } from './createOpenai';
 
-import { GenerativeModel, GoogleGenerativeAI } from '@google/generative-ai'
 /**
  * createOpenAI Instance with Auth and azure openai support
  * if auth not pass ,just return error response
  */
-export const createBizOpenAI = (req: Request, model: string): Response | OpenAI | GenerativeModel => {
-
+export const createBizOpenAI = (req: Request, model: string): Response | OpenAI => {
   const { apiKey, accessCode, endpoint, useAzure, apiVersion } = getOpenAIAuthFromRequest(req);
 
   const result = checkAuth({ accessCode, apiKey });
@@ -24,7 +22,7 @@ export const createBizOpenAI = (req: Request, model: string): Response | OpenAI 
     return createErrorResponse(result.error as ErrorType);
   }
 
-  let openai: OpenAI | GenerativeModel;
+  let openai: OpenAI;
 
   const { USE_AZURE_OPENAI } = getServerConfig();
   const useAzureOpenAI = useAzure || USE_AZURE_OPENAI;
@@ -32,9 +30,6 @@ export const createBizOpenAI = (req: Request, model: string): Response | OpenAI 
   try {
     if (useAzureOpenAI) {
       openai = createAzureOpenai({ apiVersion, endpoint, model, userApiKey: apiKey });
-    } else if (model === 'gemini-pro') {
-      const genAI = new GoogleGenerativeAI(apiKey || '');
-      openai = genAI.getGenerativeModel({ model })
     } else {
       openai = createOpenai(apiKey, endpoint);
     }

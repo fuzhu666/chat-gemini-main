@@ -24,7 +24,8 @@ const Header = memo(() => {
   const avatar = useGlobalStore((st) => st.settings.avatar);
   return (
     <MobileNavBar
-      center={<Logo type={'text'} />}
+      center={<div className="global_logo">微帝国AI</div>}
+      // center={<Logo type={'text'} />}
       left={
         <div onClick={() => router.push('/settings')} style={{ marginLeft: 8 }}>
           {avatar ? <Avatar avatar={avatar} size={28} /> : <Logo size={28} />}

@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@lobehub/chat-plugin-sdk';
+import { 微帝国AIPluginManifest, 微帝国AIPluginMeta } from '@lobehub/chat-plugin-sdk';
 import { act, renderHook } from '@testing-library/react';
 import { notification } from 'antd';
 import useSWR from 'swr';
@@ -49,7 +49,7 @@ const pluginManifestMock = {
       },
     },
   ],
-  author: 'LobeHub',
+  author: '微帝国AI',
   createAt: '2023-08-12',
   homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
   identifier: 'realtime-weather',
@@ -84,7 +84,7 @@ beforeEach(() => {
         meta: { title: 'plugin1', avatar: '🍏' },
         manifest: 'https://abc.com/manifest.json',
         schemaVersion: 1,
-      } as LobeChatPluginMeta,
+      } as 微帝国AIPluginMeta,
     ],
   });
   console.error = () => {};
@@ -209,7 +209,7 @@ describe('useToolStore:pluginStore', () => {
             },
           },
         ],
-        author: 'LobeHub',
+        author: '微帝国AI',
         createAt: '2023-08-12',
         homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
         identifier: 'realtime-weather',
@@ -260,7 +260,7 @@ describe('useToolStore:pluginStore', () => {
           {
             identifier: 'plugin1',
             meta: { title: 'plugin1', avatar: '🍏' },
-          } as LobeChatPluginMeta,
+          } as 微帝国AIPluginMeta,
         ],
       });
 
@@ -285,12 +285,12 @@ describe('useToolStore:pluginStore', () => {
               identifier: 'plugin1',
               meta: { title: 'plugin1', avatar: '🍏' },
               manifest: 'https://abc.com/manifest.json',
-            } as LobeChatPluginMeta,
+            } as 微帝国AIPluginMeta,
             {
               identifier: 'plugin2',
               meta: { title: 'plugin2', avatar: '🍏' },
               manifest: 'https://abc.com/manifest.json',
-            } as LobeChatPluginMeta,
+            } as 微帝国AIPluginMeta,
           ],
         });
       });
@@ -321,7 +321,7 @@ describe('useToolStore:pluginStore', () => {
               manifest: {
                 identifier: pluginIdentifier,
                 meta: {},
-              } as LobeChatPluginManifest,
+              } as 微帝国AIPluginManifest,
             },
           ],
         });

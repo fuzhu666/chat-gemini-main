@@ -47,7 +47,7 @@ export const useSessionStore = createWithEqualityFn<SessionStore>()(
   persist(
     subscribeWithSelector(
       devtools(createStore, {
-        name: 'LobeChat_Session' + (isDev ? '_DEV' : ''),
+        name: '微帝国AI_Session' + (isDev ? '_DEV' : ''),
       }),
     ),
     persistOptions,

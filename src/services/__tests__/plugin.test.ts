@@ -1,7 +1,6 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { 微帝国AIPluginManifest } from '@lobehub/chat-plugin-sdk';
 import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { getPluginIndexJSON } from '@/const/url';
 import { PluginModel } from '@/database/models/plugin';
 import { DB_Plugin } from '@/database/schemas/plugin';
 import { globalHelpers } from '@/store/global/helpers';
@@ -9,11 +8,11 @@ import { LobeTool } from '@/types/tool';
 import { LobeToolCustomPlugin } from '@/types/tool/plugin';
 
 import { InstallPluginParams, pluginService } from '../plugin';
+import openAPIV3 from './openai/OpenAPI_V3.json';
+import OpenAIPlugin from './openai/plugin.json';
 
 // Mocking modules and functions
-vi.mock('@/const/url', () => ({
-  getPluginIndexJSON: vi.fn(),
-}));
+
 vi.mock('@/store/global/helpers', () => ({
   globalHelpers: {
     getCurrentLanguage: vi.fn(),
@@ -38,9 +37,7 @@ describe('PluginService', () => {
     it('should fetch and return the plugin list', async () => {
       // Arrange
       const fakeResponse = { plugins: [{ name: 'TestPlugin' }] };
-      const fakeUrl = 'http://fake-url.com/plugins.json';
-      (globalHelpers.getCurrentLanguage as Mock).mockReturnValue('en');
-      (getPluginIndexJSON as Mock).mockReturnValue(fakeUrl);
+      (globalHelpers.getCurrentLanguage as Mock).mockReturnValue('tt');
       global.fetch = vi.fn(() =>
         Promise.resolve({
           json: () => Promise.resolve(fakeResponse),
@@ -52,8 +49,7 @@ describe('PluginService', () => {
 
       // Assert
       expect(globalHelpers.getCurrentLanguage).toHaveBeenCalled();
-      expect(getPluginIndexJSON).toHaveBeenCalledWith('en');
-      expect(fetch).toHaveBeenCalledWith(fakeUrl);
+      expect(fetch).toHaveBeenCalledWith('/api/plugin/store?locale=tt');
       expect(pluginList).toEqual(fakeResponse);
     });
 
@@ -61,7 +57,6 @@ describe('PluginService', () => {
       // Arrange
       const fakeUrl = 'http://fake-url.com/plugins.json';
       (globalHelpers.getCurrentLanguage as Mock).mockReturnValue('en');
-      (getPluginIndexJSON as Mock).mockReturnValue(fakeUrl);
       global.fetch = vi.fn(() => Promise.reject(new Error('Network error')));
 
       // Act & Assert
@@ -92,7 +87,7 @@ describe('PluginService', () => {
             },
           },
         ],
-        author: 'LobeHub',
+        author: '微帝国AI',
         createAt: '2023-08-12',
         homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
         identifier: 'realtime-weather',
@@ -111,6 +106,7 @@ describe('PluginService', () => {
 
       global.fetch = vi.fn(() =>
         Promise.resolve({
+          headers: new Headers({ 'content-type': 'application/json' }),
           ok: true,
           json: () => Promise.resolve(fakeManifest),
         }),
@@ -135,6 +131,7 @@ describe('PluginService', () => {
       const manifestUrl = 'http://fake-url.com/manifest.json';
       global.fetch = vi.fn(() =>
         Promise.resolve({
+          headers: new Headers({ 'content-type': 'application/json' }),
           ok: true,
           json: () => Promise.resolve(fakeManifest),
         }),
@@ -164,6 +161,7 @@ describe('PluginService', () => {
       const manifestUrl = 'http://fake-url.com/manifest.json';
       global.fetch = vi.fn(() =>
         Promise.resolve({
+          headers: new Headers({ 'content-type': 'application/json' }),
           ok: true,
           json: () => {
             throw new Error('abc');
@@ -184,6 +182,7 @@ describe('PluginService', () => {
       global.fetch = vi.fn(() =>
         Promise.resolve({
           ok: false,
+          headers: new Headers({ 'content-type': 'application/json' }),
           json: () => Promise.resolve(fakeManifest),
         }),
       ) as any;
@@ -194,6 +193,85 @@ describe('PluginService', () => {
         expect(e).toEqual(new TypeError('fetchError'));
       }
     });
+
+    describe('support OpenAPI manifest', () => {
+      it('should get plugin manifest', async () => {
+        const manifestUrl = 'http://fake-url.com/manifest.json';
+        const openapiUrl = 'http://fake-url.com/openapiUrl.json';
+
+        const fakeManifest = {
+          $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+          api: [],
+          openapi: openapiUrl,
+          author: '微帝国AI',
+          createAt: '2023-08-12',
+          homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+          identifier: 'realtime-weather',
+          meta: {
+            avatar: '🌈',
+            tags: ['weather', 'realtime'],
+            title: 'Realtime Weather',
+            description: 'Get realtime weather information',
+          },
+          ui: {
+            url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+            height: 310,
+          },
+          version: '1',
+        };
+
+        global.fetch = vi.fn((url) =>
+          Promise.resolve({
+            ok: true,
+            headers: new Headers({ 'content-type': 'application/json' }),
+            json: () => Promise.resolve(url === openapiUrl ? openAPIV3 : fakeManifest),
+          }),
+        ) as any;
+
+        const manifest = await pluginService.getPluginManifest(manifestUrl);
+
+        expect(manifest).toMatchSnapshot();
+      });
+
+      it('should return error on openAPIInvalid', async () => {
+        const openapiUrl = 'http://fake-url.com/openapiUrl.json';
+        const manifestUrl = 'http://fake-url.com/manifest.json';
+        const fakeManifest = {
+          $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+          api: [],
+          openapi: openapiUrl,
+          author: '微帝国AI',
+          createAt: '2023-08-12',
+          homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+          identifier: 'realtime-weather',
+          meta: {
+            avatar: '🌈',
+            tags: ['weather', 'realtime'],
+            title: 'Realtime Weather',
+            description: 'Get realtime weather information',
+          },
+          ui: {
+            url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+            height: 310,
+          },
+          version: '1',
+        };
+
+        global.fetch = vi.fn((url) =>
+          Promise.resolve({
+            ok: true,
+            headers: new Headers({ 'content-type': 'application/json' }),
+            json: () => Promise.resolve(url === openapiUrl ? [] : fakeManifest),
+          }),
+        ) as any;
+
+        try {
+          await pluginService.getPluginManifest(manifestUrl);
+        } catch (e) {
+          expect(e).toEqual(new TypeError('openAPIInvalid'));
+        }
+      });
+    });
   });
 
   describe('installPlugin', () => {
@@ -201,7 +279,7 @@ describe('PluginService', () => {
       // Arrange
       const fakePlugin = {
         identifier: 'test-plugin',
-        manifest: { name: 'TestPlugin', version: '1.0.0' } as unknown as LobeChatPluginManifest,
+        manifest: { name: 'TestPlugin', version: '1.0.0' } as unknown as 微帝国AIPluginManifest,
         type: 'plugin',
       } as InstallPluginParams;
       vi.mocked(PluginModel.create).mockResolvedValue(fakePlugin);
@@ -287,7 +365,7 @@ describe('PluginService', () => {
     it('should update a plugin manifest', async () => {
       // Arrange
       const id = 'plugin-id';
-      const manifest = { name: 'NewPluginManifest' } as unknown as LobeChatPluginManifest;
+      const manifest = { name: 'NewPluginManifest' } as unknown as 微帝国AIPluginManifest;
       vi.mocked(PluginModel.update).mockResolvedValue(1);
 
       // Act
@@ -329,5 +407,9 @@ describe('PluginService', () => {
     });
   });
 
-  // Add any additional tests to cover edge cases or error handling as needed.
+  it('can parse the OpenAI plugin', async () => {
+    const manifest = pluginService['convertOpenAIManifestToLobeManifest'](OpenAIPlugin as any);
+
+    expect(manifest).toMatchSnapshot();
+  });
 });

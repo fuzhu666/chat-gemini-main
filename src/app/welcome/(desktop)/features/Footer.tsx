@@ -14,9 +14,9 @@ const Footer = memo(() => {
   return (
     <Flexbox align={'center'} horizontal justify={'space-between'} style={{ padding: 16 }}>
       <span style={{ color: theme.colorTextDescription }}>
-        ©{new Date().getFullYear()} LobeHub
+        ©{new Date().getFullYear()} 微帝国AI
       </span>
-      <Flexbox horizontal>
+      {/* <Flexbox horizontal>
         <ActionIcon
           icon={DiscordIcon}
           onClick={() => window.open(DISCORD, '__blank')}
@@ -35,7 +35,7 @@ const Footer = memo(() => {
           size={'site'}
           title={'GitHub'}
         />
-      </Flexbox>
+      </Flexbox> */}
     </Flexbox>
   );
 });

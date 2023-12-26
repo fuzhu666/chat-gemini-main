@@ -125,7 +125,7 @@ const BottomActions = memo<BottomActionProps>(({ tab, setTab }) => {
 
   return (
     <>
-      <ActionIcon
+      {/* <ActionIcon
         icon={DiscordIcon}
         onClick={() => window.open(DISCORD, '__blank')}
         placement={'right'}
@@ -136,7 +136,7 @@ const BottomActions = memo<BottomActionProps>(({ tab, setTab }) => {
         onClick={() => window.open(GITHUB, '__blank')}
         placement={'right'}
         title={'GitHub'}
-      />
+      /> */}
       <Dropdown arrow={false} menu={{ items }} trigger={['click']}>
         {hasNewVersion ? (
           <Flexbox>

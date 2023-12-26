@@ -1,13 +1,16 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { 微帝国AIPluginManifest, LobePluginType } from '@lobehub/chat-plugin-sdk';
 
 import { CustomPluginParams } from './plugin';
-
-export type LobeToolType = 'builtin' | 'customPlugin' | 'plugin';
+import { LobeToolType } from './tool';
 
 export interface LobeTool {
   customParams?: CustomPluginParams;
   identifier: string;
-  manifest?: LobeChatPluginManifest;
+  manifest?: 微帝国AIPluginManifest;
   settings?: any;
   type: LobeToolType;
 }
+
+export type LobeToolRenderType = LobePluginType | 'builtin';
+
+export * from './builtin';

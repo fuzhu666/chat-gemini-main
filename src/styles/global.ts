@@ -21,6 +21,11 @@ export default ({ prefixCls }: { prefixCls: string }) => css`
     margin-bottom: 0;
   }
 
+  .global_logo {
+    font-size: 24px;
+    color: #000;
+  }
+
   @media (max-width: 575px) {
     * {
       ::-webkit-scrollbar {

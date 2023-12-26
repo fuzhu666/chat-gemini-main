@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import pkg from '@/../package.json';
-import ChatList from '@/app/chat/features/Conversation/ChatList';
+import ChatList from '@/features/Conversation/ChatList';
 import { useSessionStore } from '@/store/session';
 import { agentSelectors, sessionSelectors } from '@/store/session/selectors';
 
@@ -98,7 +98,7 @@ const Preview = memo<PreviewProps>(({ withSystemRole, imageType, withBackground,
         scale: 2,
       });
       const link = document.createElement('a');
-      link.download = `LobeChat_${title}_${dayjs().format('YYYY-MM-DD')}.${imageType}`;
+      link.download = `微帝国AI_${title}_${dayjs().format('YYYY-MM-DD')}.${imageType}`;
       link.href = dataUrl;
       link.click();
       setLoading(false);
@@ -136,7 +136,8 @@ const Preview = memo<PreviewProps>(({ withSystemRole, imageType, withBackground,
             <ChatList />
             {withFooter ? (
               <Flexbox align={'center'} className={styles.footer} gap={4}>
-                <Logo extra={'chat'} type={'combine'} />
+                {/* <Logo extra={'chat'} type={'combine'} /> */}
+                <div className="global_logo">微帝国AI</div>
                 <div className={styles.url}>{pkg.homepage}</div>
               </Flexbox>
             ) : (

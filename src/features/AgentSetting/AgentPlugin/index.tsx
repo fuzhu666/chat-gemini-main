@@ -8,8 +8,9 @@ import { Center, Flexbox } from 'react-layout-kit';
 
 import { FORM_STYLE } from '@/const/layoutTokens';
 import PluginStore from '@/features/PluginStore';
+import PluginTag from '@/features/PluginStore/PluginItem/PluginTag';
 import { pluginHelpers, useToolStore } from '@/store/tool';
-import { pluginSelectors } from '@/store/tool/selectors';
+import { toolSelectors } from '@/store/tool/selectors';
 
 import { useStore } from '../store';
 import AddPluginButton from './AddPluginButton';
@@ -27,7 +28,7 @@ const AgentPlugin = memo(() => {
     s.toggleAgentPlugin,
   ]);
 
-  const installedPlugins = useToolStore(pluginSelectors.installedPluginMetaList, isEqual);
+  const installedPlugins = useToolStore(toolSelectors.metaList, isEqual);
   const useFetchInstalledPlugins = useToolStore((s) => s.useFetchInstalledPlugins);
 
   const { isLoading } = useFetchInstalledPlugins();
@@ -36,31 +37,24 @@ const AgentPlugin = memo(() => {
 
   //  =========== Plugin List =========== //
 
-  const list = installedPlugins.map(({ identifier, type, meta }) => {
+  const list = installedPlugins.map(({ identifier, type, meta, author }) => {
     const isCustomPlugin = type === 'customPlugin';
 
     return {
-      avatar: <Avatar avatar={pluginHelpers.getPluginAvatar(meta)} />,
+      avatar: <Avatar avatar={pluginHelpers.getPluginAvatar(meta)} style={{ flex: 'none' }} />,
       children: isCustomPlugin ? (
         <LocalPluginItem id={identifier} />
       ) : (
         <PluginAction identifier={identifier} />
       ),
-
       desc: pluginHelpers.getPluginDesc(meta),
-
-      label: isCustomPlugin ? (
+      label: (
         <Flexbox align={'center'} gap={8} horizontal>
           {pluginHelpers.getPluginTitle(meta)}
-          <Tag bordered={false} color={'gold'}>
-            {t('list.item.local.title', { ns: 'plugin' })}
-          </Tag>
+          <PluginTag author={author} type={type} />
         </Flexbox>
-      ) : (
-        pluginHelpers.getPluginTitle(meta)
       ),
       minWidth: undefined,
-      tag: identifier,
     };
   });
 

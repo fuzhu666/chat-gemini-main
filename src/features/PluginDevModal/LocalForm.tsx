@@ -4,9 +4,10 @@ import dynamic from 'next/dynamic';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { settingsSelectors, useGlobalStore } from '@/store/global';
+import { useGlobalStore } from '@/store/global';
+import { settingsSelectors } from '@/store/global/selectors';
 import { useToolStore } from '@/store/tool';
-import { pluginSelectors } from '@/store/tool/slices/plugin/selectors';
+import { pluginSelectors } from '@/store/tool/selectors';
 
 const EmojiPicker = dynamic(() => import('@lobehub/ui/es/EmojiPicker'), { ssr: false });
 
@@ -56,7 +57,7 @@ const LocalForm = memo<{ form: FormInstance; mode?: 'edit' | 'create' }>(({ form
       name: ['manifest', 'meta', 'description'],
     },
     {
-      children: <Input placeholder={'LobeHub'} />,
+      children: <Input placeholder={'微帝国AI'} />,
       desc: t('dev.meta.author.desc'),
       label: t('dev.meta.author.label'),
       name: ['manifest', 'author'],

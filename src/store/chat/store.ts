@@ -6,12 +6,12 @@ import { StateCreator } from 'zustand/vanilla';
 import { createHyperStorage } from '@/store/middleware/createHyperStorage';
 import { isDev } from '@/utils/env';
 
-import { ChatEnhanceAction, chatEnhance } from './actions/enhance';
-import { ChatMessageAction, chatMessage } from './actions/message';
-import { ChatPluginAction, chatPlugin } from './actions/plugin';
-import { ShareAction, chatShare } from './actions/share';
-import { ChatTopicAction, chatTopic } from './actions/topic';
 import { ChatStoreState, initialState } from './initialState';
+import { ChatEnhanceAction, chatEnhance } from './slices/enchance/action';
+import { ChatMessageAction, chatMessage } from './slices/message/action';
+import { ShareAction, chatShare } from './slices/share/action';
+import { ChatPluginAction, chatPlugin } from './slices/tool/action';
+import { ChatTopicAction, chatTopic } from './slices/topic/action';
 
 export interface ChatStoreAction
   extends ChatMessageAction,
@@ -35,7 +35,7 @@ const createStore: StateCreator<ChatStore, [['zustand/devtools', never]]> = (...
 });
 
 const persistOptions: PersistOptions<ChatStore> = {
-  name: 'LobeChat_Chat',
+  name: '微帝国AI_Chat',
 
   // 手动控制 Hydration ，避免 ssr 报错
   skipHydration: true,
@@ -55,7 +55,7 @@ const persistOptions: PersistOptions<ChatStore> = {
 export const useChatStore = createWithEqualityFn<ChatStore>()(
   persist(
     devtools(createStore, {
-      name: 'LobeChat_Chat' + (isDev ? '_DEV' : ''),
+      name: '微帝国AI_Chat' + (isDev ? '_DEV' : ''),
     }),
     persistOptions,
   ),

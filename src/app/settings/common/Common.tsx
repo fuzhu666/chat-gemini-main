@@ -12,7 +12,8 @@ import AvatarWithUpload from '@/features/AvatarWithUpload';
 import { localeOptions } from '@/locales/options';
 import { useChatStore } from '@/store/chat';
 import { useFileStore } from '@/store/file';
-import { settingsSelectors, useGlobalStore } from '@/store/global';
+import { useGlobalStore } from '@/store/global';
+import { settingsSelectors } from '@/store/global/selectors';
 import { useSessionStore } from '@/store/session';
 import { useToolStore } from '@/store/tool';
 import { switchLang } from '@/utils/switchLang';
@@ -69,13 +70,11 @@ const Common = memo<SettingsCommonProps>(({ showAccessCodeConfig }) => {
       },
       okText: t('ok', { ns: 'common' }),
       onOk: async () => {
-        await Promise.all([
-          clearSessions,
-          removeAllPlugins,
-          clearTopics,
-          removeAllFiles,
-          clearAllMessages,
-        ]);
+        await clearSessions();
+        await removeAllPlugins();
+        await clearTopics();
+        await removeAllFiles();
+        await clearAllMessages();
 
         message.success(t('danger.clear.success'));
       },
@@ -133,7 +132,33 @@ const Common = memo<SettingsCommonProps>(({ showAccessCodeConfig }) => {
         name: 'language',
       },
       {
-        children: <SliderWithInput max={18} min={12} />,
+        children: (
+          <SliderWithInput
+            marks={{
+              12: {
+                label: t('settingTheme.fontSize.marks.small'),
+                style: {
+                  marginTop: 4,
+                },
+              },
+              14: {
+                label: t('settingTheme.fontSize.marks.normal'),
+                style: {
+                  marginTop: 4,
+                },
+              },
+              18: {
+                label: t('settingTheme.fontSize.marks.large'),
+                style: {
+                  marginTop: 4,
+                },
+              },
+            }}
+            max={18}
+            min={12}
+            step={1}
+          />
+        ),
         desc: t('settingTheme.fontSize.desc'),
         label: t('settingTheme.fontSize.title'),
         name: 'fontSize',
