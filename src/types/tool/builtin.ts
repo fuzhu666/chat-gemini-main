@@ -1,8 +1,8 @@
-import { 微帝国AIPluginApi, Meta } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginApi, Meta } from '@lobehub/chat-plugin-sdk';
 import { ReactNode } from 'react';
 
 export interface BuiltinToolManifest {
-  api: 微帝国AIPluginApi[];
+  api: LobeChatPluginApi[];
 
   /**
    * Plugin name

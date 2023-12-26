@@ -1,4 +1,4 @@
-import { 微帝国AIPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
 import { act } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -38,7 +38,7 @@ describe('ChatService', () => {
                 identifier: 'plugin1',
                 api: [{ name: 'api1' }],
                 type: 'default',
-              } as 微帝国AIPluginManifest,
+              } as LobeChatPluginManifest,
               type: 'plugin',
             },
             {
@@ -47,7 +47,7 @@ describe('ChatService', () => {
                 identifier: 'plugin2',
                 api: [{ name: 'api2' }],
                 type: 'standalone',
-              } as 微帝国AIPluginManifest,
+              } as LobeChatPluginManifest,
               type: 'plugin',
             },
           ],

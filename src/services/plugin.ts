@@ -1,6 +1,6 @@
 import {
-  微帝国AIPluginManifest,
-  微帝国AIPluginsMarketIndex,
+  LobeChatPluginManifest,
+  LobeChatPluginsMarketIndex,
   pluginManifestSchema,
 } from '@lobehub/chat-plugin-sdk';
 
@@ -13,7 +13,7 @@ import { LobeToolCustomPlugin } from '@/types/tool/plugin';
 
 export interface InstallPluginParams {
   identifier: string;
-  manifest: 微帝国AIPluginManifest;
+  manifest: LobeChatPluginManifest;
   type: 'plugin' | 'customPlugin';
 }
 class PluginService {
@@ -51,7 +51,7 @@ class PluginService {
   /**
    * get plugin list from store
    */
-  getPluginList = async (): Promise<微帝国AIPluginsMarketIndex> => {
+  getPluginList = async (): Promise<LobeChatPluginsMarketIndex> => {
     const locale = globalHelpers.getCurrentLanguage();
 
     const res = await fetch(`${PLUGINS_URLS.store}?locale=${locale}`);
@@ -62,7 +62,7 @@ class PluginService {
   getPluginManifest = async (
     url?: string,
     useProxy: boolean = false,
-  ): Promise<微帝国AIPluginManifest> => {
+  ): Promise<LobeChatPluginManifest> => {
     // 1. valid plugin
     if (!url) {
       throw new TypeError('noManifest');
@@ -70,7 +70,7 @@ class PluginService {
 
     // 2. 发送请求
 
-    let data = await this._fetchJSON<微帝国AIPluginManifest>(url, useProxy);
+    let data = await this._fetchJSON<LobeChatPluginManifest>(url, useProxy);
 
     // @ts-ignore
     // if there is a description_for_model, it is an OpenAI plugin
@@ -125,7 +125,7 @@ class PluginService {
   async updatePlugin(id: string, value: LobeToolCustomPlugin) {
     return PluginModel.update(id, value);
   }
-  async updatePluginManifest(id: string, manifest: 微帝国AIPluginManifest) {
+  async updatePluginManifest(id: string, manifest: LobeChatPluginManifest) {
     return PluginModel.update(id, { manifest });
   }
 
@@ -139,8 +139,8 @@ class PluginService {
 
   private convertOpenAIManifestToLobeManifest = (
     data: OpenAIPluginManifest,
-  ): 微帝国AIPluginManifest => {
-    const manifest: 微帝国AIPluginManifest = {
+  ): LobeChatPluginManifest => {
+    const manifest: LobeChatPluginManifest = {
       api: [],
       homepage: data.legal_info_url,
       identifier: data.name_for_model,

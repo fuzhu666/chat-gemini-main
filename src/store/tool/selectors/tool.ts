@@ -1,4 +1,4 @@
-import { 微帝国AIPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
 import { uniqBy } from 'lodash-es';
 import { Md5 } from 'ts-md5';
 
@@ -35,7 +35,7 @@ const enabledSchema =
   (s: ToolStoreState): ChatCompletionFunctions[] => {
     const list = pluginSelectors
       .installedPluginManifestList(s)
-      .concat(s.builtinTools.map((b) => b.manifest as 微帝国AIPluginManifest))
+      .concat(s.builtinTools.map((b) => b.manifest as LobeChatPluginManifest))
       // 如果存在 enabledPlugins，那么只启用 enabledPlugins 中的插件
       .filter((m) => tools.includes(m?.identifier))
       .flatMap((manifest) =>
@@ -53,7 +53,7 @@ const enabledSystemRoles =
   (s: ToolStoreState) => {
     const toolsSystemRole = pluginSelectors
       .installedPluginManifestList(s)
-      .concat(s.builtinTools.map((b) => b.manifest as 微帝国AIPluginManifest))
+      .concat(s.builtinTools.map((b) => b.manifest as LobeChatPluginManifest))
       // 如果存在 enabledPlugins，那么只启用 enabledPlugins 中的插件
       .filter((m) => tools.includes(m?.identifier))
       .map((manifest) => {
@@ -98,10 +98,10 @@ const getMetaById =
 
 const getManifestById =
   (id: string) =>
-  (s: ToolStoreState): 微帝国AIPluginManifest | undefined =>
+  (s: ToolStoreState): LobeChatPluginManifest | undefined =>
     pluginSelectors
       .installedPluginManifestList(s)
-      .concat(s.builtinTools.map((b) => b.manifest as 微帝国AIPluginManifest))
+      .concat(s.builtinTools.map((b) => b.manifest as LobeChatPluginManifest))
       .find((i) => i.identifier === id);
 
 // 获取插件 manifest 加载状态

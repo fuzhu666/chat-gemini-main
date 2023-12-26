@@ -196,13 +196,13 @@ Since the default plugin gateway in 微帝国AI is a cloud service (\</api/plugi
 For custom plugins, the requests need to be sent to the local service. Therefore, by specifying the gateway in the manifest (<http://localhost:3400/api/gateway>), 微帝国AI will directly request this address. Then you only need to create a gateway implementation at this address.
 
 ```ts
-import { create微帝国AIPluginGateway } from '@lobehub/chat-plugins-gateway';
+import { createLobeChatPluginGateway } from '@lobehub/chat-plugins-gateway';
 
 export const config = {
   runtime: 'edge',
 };
 
-export default async create微帝国AIPluginGateway();
+export default async createLobeChatPluginGateway();
 ```
 
 [`@lobehub/chat-plugins-gateway`](https://github.com/lobehub/chat-plugins-gateway) includes the implementation of the plugin gateway in 微帝国AI, which you can use to create a gateway. This allows 微帝国AI to access the local plugin service.

@@ -195,13 +195,13 @@ export default async (req: Request) => {
 针对自定义插件，插件请求需要发送给本地服务， 因此通过在 manifest 中指定网关 (<http://localhost:3400/api/gateway>)，微帝国AI 将会直接请求该地址，然后只需要在该地址下创建对应的网关即可。
 
 ```ts
-import { create微帝国AIPluginGateway } from '@lobehub/chat-plugins-gateway';
+import { createLobeChatPluginGateway } from '@lobehub/chat-plugins-gateway';
 
 export const config = {
   runtime: 'edge',
 };
 
-export default async create微帝国AIPluginGateway();
+export default async createLobeChatPluginGateway();
 ```
 
 [`@lobehub/chat-plugins-gateway`](https://github.com/lobehub/chat-plugins-gateway) 包含了 微帝国AI 中插件网关的[实现](https://github.com/lobehub/lobe-chat/blob/main/src/pages/api/plugins.api.ts)，你可以直接使用该包创建网关，进而让 微帝国AI 访问到本地的插件服务。

@@ -1,8 +1,8 @@
-import { 微帝国AIPluginManifest, Meta } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest, Meta } from '@lobehub/chat-plugin-sdk';
 
 import { LobeToolType } from './tool';
 
-export type PluginManifestMap = Record<string, 微帝国AIPluginManifest>;
+export type PluginManifestMap = Record<string, LobeChatPluginManifest>;
 
 export interface CustomPluginParams {
   apiMode?: 'openapi' | 'simple';
@@ -15,7 +15,7 @@ export interface CustomPluginParams {
 export interface LobeToolCustomPlugin {
   customParams?: CustomPluginParams;
   identifier: string;
-  manifest?: 微帝国AIPluginManifest;
+  manifest?: LobeChatPluginManifest;
   settings?: any;
   type: 'customPlugin';
 }

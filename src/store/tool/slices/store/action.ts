@@ -1,4 +1,4 @@
-import { 微帝国AIPluginsMarketIndex } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginsMarketIndex } from '@lobehub/chat-plugin-sdk';
 import { notification } from 'antd';
 import { t } from 'i18next';
 import { produce } from 'immer';
@@ -21,13 +21,13 @@ const INSTALLED_PLUGINS = 'loadInstalledPlugins';
 export interface PluginStoreAction {
   installPlugin: (identifier: string, type?: 'plugin' | 'customPlugin') => Promise<void>;
   installPlugins: (plugins: string[]) => Promise<void>;
-  loadPluginStore: () => Promise<微帝国AIPluginsMarketIndex>;
+  loadPluginStore: () => Promise<LobeChatPluginsMarketIndex>;
   refreshPlugins: () => Promise<void>;
   uninstallPlugin: (identifier: string) => Promise<void>;
 
   updateInstallLoadingState: (key: string, value: boolean | undefined) => void;
   useFetchInstalledPlugins: () => SWRResponse<LobeTool[]>;
-  useFetchPluginStore: () => SWRResponse<微帝国AIPluginsMarketIndex>;
+  useFetchPluginStore: () => SWRResponse<LobeChatPluginsMarketIndex>;
 }
 
 export const createPluginStoreSlice: StateCreator<
@@ -100,5 +100,5 @@ export const createPluginStoreSlice: StateCreator<
       revalidateOnFocus: false,
     }),
   useFetchPluginStore: () =>
-    useSWR<微帝国AIPluginsMarketIndex>('loadPluginStore', get().loadPluginStore),
+    useSWR<LobeChatPluginsMarketIndex>('loadPluginStore', get().loadPluginStore),
 });
